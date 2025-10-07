@@ -88,9 +88,9 @@ export default function BookList() {
       <style jsx>{`
         .book-list-container {
           max-width: 1200px;
-          margin: 3rem auto;
+          margin: 0px;
           padding: 2.5rem 2rem;
-          background: #f9fafb;
+  background: linear-gradient(135deg, #e0f2fe, #f9fafb);
           border-radius: 1.25rem;
           font-family: "Inter", sans-serif;
           display: flex;

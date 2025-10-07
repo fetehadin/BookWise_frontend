@@ -3,7 +3,7 @@
 .dashboard-container {
   padding: 2rem;
   min-height: calc(100vh - 120px);
-  background-color: #f8f9fa;
+  background: linear-gradient(135deg, #e0f2fe, #f9fafb);
   font-family: sans-serif;
   color: #333;
 }

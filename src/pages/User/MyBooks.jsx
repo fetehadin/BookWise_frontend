@@ -105,6 +105,8 @@ export default function MyBooks() {
           padding: 2rem;
           font-family: 'Inter', sans-serif;
           color: #1f2937;
+            background: linear-gradient(135deg, #e0f2fe, #f9fafb);
+
         }
 
         h1 {

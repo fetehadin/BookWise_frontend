@@ -101,12 +101,15 @@ export default function AdminDashboard() {
       </div>
 
       <style jsx>{`
+      body{margin : 0px
+      }
         .admin-dashboard-container {
           max-width: 1200px;
-          margin: 3rem auto;
+          margin: 0px;
           padding: 2rem;
           font-family: "Inter", sans-serif;
           display: flex;
+            background: linear-gradient(135deg, #e0f2fe, #f9fafb);
           flex-direction: column;
           gap: 2rem;
         }

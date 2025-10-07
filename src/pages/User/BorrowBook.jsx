@@ -97,8 +97,10 @@ export default function BorrowBook() {
       <style>{`
         .borrow-container {
           max-width: 1100px;
-          margin: 2rem auto;
+          margin: 0px;
           padding: 2rem;
+            background: linear-gradient(135deg, #e0f2fe, #f9fafb);
+
           font-family: 'Inter', sans-serif;
           color: #1f2937;
         }

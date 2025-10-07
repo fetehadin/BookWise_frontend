@@ -225,9 +225,9 @@ export default function ManageBook() {
       <style jsx>{`
         .admin-page {
           max-width: 1100px;
-          margin: 3rem auto;
+          margin: 0px;
           padding: 2rem;
-          background: linear-gradient(to bottom right, #eef2ff, #ffffff);
+          background: linear-gradient(135deg, #e0f2fe, #f9fafb);
           border-radius: 1rem;
           box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05);
           font-family: "Inter", sans-serif;
