@@ -1,14 +1,23 @@
 import React from "react";
 
-const BookCard = ({ book }) => {
+export default function BookCard({ book, onBorrow }) {
   return (
     <div className="book-card">
       <h3>{book.title}</h3>
-      <p>Author: {book.author}</p>
-      <p>ISBN: {book.isbn}</p>
-      <p>Available: {book.available_copies}</p>
+      <p>{book.author}</p>
+      <p>Genre: {book.genre}</p>
+      <p>
+        Available:{" "}
+        {book.availableCopies > 0
+          ? `${book.availableCopies} of ${book.copies}`
+          : "Not Available"}
+      </p>
+      <button
+        disabled={book.availableCopies === 0}
+        onClick={onBorrow}
+      >
+        {book.availableCopies > 0 ? "Borrow Book" : "Not Available"}
+      </button>
     </div>
   );
-};
-
-export default BookCard;
+}
