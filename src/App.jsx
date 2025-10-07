@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar";
-import Footer from "./Components/Footer";
 import ProtectedRoute from "./Components/ProtectedRoute";
 import { AuthContext } from "./context/AuthContext";
 
@@ -25,20 +24,6 @@ import ManageUsers from "./pages/Admin/ManageUsers";
 
 const App = () => {
   const { user } = useContext(AuthContext);
-
-  const noFooterRoutes = [
-    "/dashboard",
-    "/books",
-    "/books/:id",
-    "/borrow",
-    "/my-books",
-    "/payment",
-    "/admin",
-    "/admin/manage-books",
-    "/admin/manage-users",
-  ];
-
-  const currentPath = window.location.pathname;
 
   return (
     <Router>
@@ -110,7 +95,7 @@ const App = () => {
           }
         />
         <Route
-          path="/admin/manage-books"
+          path="/manage-books"
           element={
             <ProtectedRoute role="admin">
               <ManageBook />
@@ -118,7 +103,7 @@ const App = () => {
           }
         />
         <Route
-          path="/admin/manage-users"
+          path="/manage-users"
           element={
             <ProtectedRoute role="admin">
               <ManageUsers />
@@ -129,8 +114,6 @@ const App = () => {
         {/* Fallback */}
         <Route path="*" element={<Home />} />
       </Routes>
-
-      {!noFooterRoutes.includes(currentPath) && <Footer />}
     </Router>
   );
 };

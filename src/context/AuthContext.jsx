@@ -1,38 +1,58 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useEffect } from "react";
+import { loginUser, registerUser } from "../services/authAPI";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [token, setToken] = useState(localStorage.getItem("token") || "");
+  const [loading, setLoading] = useState(false);
 
-  const login = async (email, password) => {
-    await new Promise((res) => setTimeout(res, 500));
-
-    const mockUsers = [
-      { email: "user@example.com", password: "123456", username: "John Doe", role: "user" },
-      { email: "admin@example.com", password: "admin123", username: "Admin", role: "admin" },
-    ];
-
-    const foundUser = mockUsers.find(
-      (u) => u.email === email && u.password === password
-    );
-
-    if (!foundUser) {
-      throw new Error("Invalid email or password");
+  useEffect(() => {
+    if (token) {
+      localStorage.setItem("token", token);
+    } else {
+      localStorage.removeItem("token");
     }
+  }, [token]);
 
-    setUser(foundUser);
-    return foundUser;
+  const login = async (credentials) => {
+    setLoading(true);
+    try {
+      const data = await loginUser(credentials);
+      setToken(data.token);
+      setUser(data.user);
+      setLoading(false);
+      return data;
+    } catch (error) {
+      setLoading(false);
+      throw error;
+    }
   };
 
-  const logout = () => setUser(null);
+  const register = async (userData) => {
+    setLoading(true);
+    try {
+      const data = await registerUser(userData);
+      setLoading(false);
+      return data;
+    } catch (error) {
+      setLoading(false);
+      throw error;
+    }
+  };
+
+  const logout = () => {
+    setUser(null);
+    setToken("");
+    localStorage.removeItem("token");
+  };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider
+      value={{ user, token, login, register, logout, loading }}
+    >
       {children}
     </AuthContext.Provider>
   );
 };
-
-// ✅ Add this custom hook
-export const useAuth = () => useContext(AuthContext);

@@ -1,32 +1,56 @@
 // src/services/booksAPI.js
-import axiosInstance from "./axiosInstance";
+let books = [
+  {
+    id: "1",
+    title: "The Great Gatsby",
+    author: "F. Scott Fitzgerald",
+    genre: "Classic",
+    copies: 5,
+    availableCopies: 3,
+    fee: 10,
+  },
+  {
+    id: "2",
+    title: "1984",
+    author: "George Orwell",
+    genre: "Dystopian",
+    copies: 4,
+    availableCopies: 0,
+    fee: 8,
+  },
+  {
+    id: "3",
+    title: "To Kill a Mockingbird",
+    author: "Harper Lee",
+    genre: "Classic",
+    copies: 6,
+    availableCopies: 6,
+    fee: 12,
+  },
+];
 
-// Get all books
 export const getAllBooks = async () => {
-  const response = await axiosInstance.get("/books");
-  return response.data;
+  return Promise.resolve(books);
 };
 
-// Get single book by id
-export const getBookById = async (bookId) => {
-  const response = await axiosInstance.get(`/books/${bookId}`);
-  return response.data;
+export const addBook = async (book) => {
+  const newBook = {
+    ...book,
+    id: String(Date.now()),
+    availableCopies: book.copies,
+  };
+  books.push(newBook);
+  return Promise.resolve(newBook);
 };
 
-// Add a new book (admin)
-export const addBook = async (bookData) => {
-  const response = await axiosInstance.post("/books", bookData);
-  return response.data;
+export const updateBook = async (id, updatedBook) => {
+  books = books.map((b) =>
+    b.id === id ? { ...b, ...updatedBook } : b
+  );
+  return Promise.resolve();
 };
 
-// Edit an existing book (admin)
-export const editBook = async (bookId, bookData) => {
-  const response = await axiosInstance.put(`/books/${bookId}`, bookData);
-  return response.data;
-};
-
-// Delete a book (admin)
-export const deleteBook = async (bookId) => {
-  const response = await axiosInstance.delete(`/books/${bookId}`);
-  return response.data;
+export const deleteBook = async (id) => {
+  books = books.filter((b) => b.id !== id);
+  return Promise.resolve();
 };

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { BookOpen, LogOut, User, LayoutDashboard, Users } from "lucide-react";
+import { BookOpen, Book, Archive, LogOut, User, LayoutDashboard, Users, RotateCw } from "lucide-react";
 import { AuthContext } from "../context/AuthContext";
 import "../styles/Navbar.css";
 
@@ -22,7 +22,7 @@ const Navbar = () => {
           <span className="navbar-title">BookWise</span>
         </Link>
 
-        {/* Nav Links / User Info */}
+        {/* User Links */}
         {user && (
           <div className="navbar-links">
             {user.role === "user" && (
@@ -36,11 +36,11 @@ const Navbar = () => {
                   <span>Books</span>
                 </Link>
                 <Link to="/borrow" className="navbar-link">
-                  <BookOpen size={18} />
-                  <span>Borrow Book</span>
+                  <RotateCw size={18} />
+                  <span>Return Book</span>
                 </Link>
                 <Link to="/my-books" className="navbar-link">
-                  <BookOpen size={18} />
+                  <Book size={18} />
                   <span>My Books</span>
                 </Link>
               </>
@@ -63,12 +63,14 @@ const Navbar = () => {
               </>
             )}
 
+            {/* User Info */}
             <div className="navbar-user">
               <User size={20} />
               <span>{user.username}</span>
               <span className="user-role">{user.role}</span>
             </div>
 
+            {/* Logout */}
             <button className="btn-logout" onClick={handleLogout}>
               <LogOut size={16} />
               <span>Logout</span>
@@ -76,7 +78,7 @@ const Navbar = () => {
           </div>
         )}
 
-        {/* Public links when not logged in */}
+        {/* Public Links */}
         {!user && (
           <div className="navbar-right">
             <Link to="/login" className="btn-link">Login</Link>

@@ -1,7 +1,6 @@
 // src/pages/User/BookList.jsx
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // for navigation
-import BookCard from "../../Components/BookCard";
 import Loader from "../../Components/Loader";
 import { toast } from "sonner";
 
@@ -16,8 +15,7 @@ export default function BookList() {
   const [books, setBooks] = useState(sampleBooks);
   const [search, setSearch] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
-  const navigate = useNavigate(); // navigation hook
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (search) {
@@ -35,7 +33,6 @@ export default function BookList() {
   const handleBorrow = (bookId) => {
     const book = books.find((b) => b.id === bookId);
     if (book.availableCopies > 0) {
-      // Navigate to payment page with book details
       navigate("/payment", { state: { book } });
     } else {
       toast.error("This book is not available.");
@@ -58,7 +55,7 @@ export default function BookList() {
         {isLoading ? (
           <Loader />
         ) : books.length === 0 ? (
-          <p>No books found.</p>
+          <p className="no-books">No books found.</p>
         ) : (
           <div className="books-grid">
             {books.map((book) => (
@@ -67,7 +64,7 @@ export default function BookList() {
                   <h3 className="book-title">{book.title}</h3>
                   <p className="book-author">{book.author}</p>
                   <p className="book-genre">{book.genre}</p>
-                  <p className="book-availability">
+                  <p className={`book-availability ${book.availableCopies === 0 ? "unavailable" : ""}`}>
                     {book.availableCopies > 0
                       ? `${book.availableCopies} available`
                       : "Not available"}
@@ -75,9 +72,7 @@ export default function BookList() {
                   <p className="book-price">Fee: ${book.price}</p>
                 </div>
                 <button
-                  className={`borrow-btn ${
-                    book.availableCopies === 0 ? "disabled" : ""
-                  }`}
+                  className={`borrow-btn ${book.availableCopies === 0 ? "disabled" : ""}`}
                   onClick={() => handleBorrow(book.id)}
                   disabled={book.availableCopies === 0}
                 >
@@ -89,42 +84,44 @@ export default function BookList() {
         )}
       </div>
 
-      {/* Stylish inline CSS */}
+      {/* Modern Professional Styling */}
       <style jsx>{`
         .book-list-container {
           max-width: 1200px;
           margin: 3rem auto;
-          padding: 2rem;
-          background: linear-gradient(145deg, #f3f4f6, #e5e7eb);
-          border-radius: 1rem;
+          padding: 2.5rem 2rem;
+          background: #f9fafb;
+          border-radius: 1.25rem;
           font-family: "Inter", sans-serif;
           display: flex;
           flex-direction: column;
           gap: 2rem;
+          box-shadow: 0 8px 20px rgba(0,0,0,0.05);
         }
 
         .book-list-container h1 {
           font-size: 2.75rem;
           font-weight: 800;
           text-align: center;
-          color: #1f2937;
+          color: #111827;
+          margin-bottom: 1rem;
         }
 
         .search-input {
           width: 100%;
           max-width: 450px;
           margin: 0 auto;
-          padding: 0.75rem 1rem;
+          padding: 0.75rem 1.25rem;
           font-size: 1.1rem;
-          border: 2px solid #9ca3af;
-          border-radius: 0.5rem;
+          border: 2px solid #d1d5db;
+          border-radius: 0.75rem;
           outline: none;
           transition: all 0.3s;
         }
 
         .search-input:focus {
           border-color: #3b82f6;
-          box-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
+          box-shadow: 0 0 12px rgba(59, 130, 246, 0.4);
         }
 
         .books-grid {
@@ -135,9 +132,9 @@ export default function BookList() {
 
         .book-card {
           background: white;
-          padding: 1.5rem;
+          padding: 1.75rem 1.5rem;
           border-radius: 1rem;
-          box-shadow: 0 10px 15px rgba(0, 0, 0, 0.08);
+          box-shadow: 0 10px 20px rgba(0,0,0,0.08);
           display: flex;
           flex-direction: column;
           justify-content: space-between;
@@ -145,8 +142,8 @@ export default function BookList() {
         }
 
         .book-card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+          transform: translateY(-6px);
+          box-shadow: 0 20px 35px rgba(0,0,0,0.12);
         }
 
         .book-info {
@@ -172,26 +169,31 @@ export default function BookList() {
         }
 
         .book-availability {
-          font-weight: 500;
-          color: #10b981; /* green if available */
+          font-weight: 600;
+          color: #10b981;
+        }
+
+        .book-availability.unavailable {
+          color: #ef4444; /* red */
         }
 
         .book-price {
-          font-weight: 600;
+          font-weight: 700;
           margin-top: 0.25rem;
-          color: #2563eb;
+          color: #3b82f6;
         }
 
         .borrow-btn {
-          padding: 0.6rem 1rem;
+          padding: 0.65rem 1.2rem;
           font-size: 1rem;
-          font-weight: 600;
+          font-weight: 700;
           color: white;
           background: linear-gradient(90deg, #3b82f6, #60a5fa);
           border: none;
-          border-radius: 0.5rem;
+          border-radius: 0.75rem;
           cursor: pointer;
           transition: all 0.3s;
+          align-self: flex-start;
         }
 
         .borrow-btn:hover {
@@ -204,6 +206,12 @@ export default function BookList() {
           background: #9ca3af;
           cursor: not-allowed;
           transform: none;
+        }
+
+        .no-books {
+          text-align: center;
+          font-size: 1.2rem;
+          color: #6b7280;
         }
 
         @media (max-width: 640px) {
