@@ -1,0 +1,160 @@
+.home-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #111827;
+  background: #f9fafb;
+  padding: 0 16px;
+}
+
+/* Hero Section */
+.home-hero {
+  text-align: center;
+  padding: 80px 0 60px;
+}
+
+.home-hero-icon {
+  color: #3b82f6;
+  margin-bottom: 0px; 
+  padding-bottom: 0px;/* Reduced gap */
+}
+
+.home-hero-title {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.home-hero-desc {
+  font-size: 18px;
+  color: #4b5563;
+  margin-bottom: 32px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.home-hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.home-hero-button {
+  font-size: 16px;
+  padding: 12px 28px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.home-hero-button.primary {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.home-hero-button.primary:hover {
+  background-color: #2563eb;
+}
+
+.home-hero-button.secondary {
+  background-color: white;
+  color: #3b82f6;
+  border: 2px solid #3b82f6;
+}
+
+.home-hero-button.secondary:hover {
+  background-color: #e5e7eb;
+}
+
+/* Features Section */
+.home-features {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  padding-bottom: 60px;
+}
+
+@media (min-width: 768px) {
+  .home-features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .home-features {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.home-feature-card {
+  background: white;
+  padding: 32px 24px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: box-shadow 0.2s ease;
+}
+
+.home-feature-card:hover {
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.home-feature-icon {
+  color: #3b82f6;
+  margin-bottom: 16px;
+}
+
+.home-feature-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.home-feature-desc {
+  font-size: 14px;
+  color: #4b5563;
+}
+
+/* CTA Section */
+.home-cta {
+  background: linear-gradient(90deg, #3b82f6, #2563eb);
+  border-radius: 16px;
+  padding: 48px 24px;
+  text-align: center;
+  color: white;
+  margin-bottom: 60px;
+}
+
+.home-cta-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.home-cta-desc {
+  font-size: 18px;
+  margin-bottom: 24px;
+  color: #bfdbfe;
+}
+
+.home-cta-button {
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 12px;
+  padding: 12px 28px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Make CTA button primary styled */
+.home-cta-button.primary {
+  background-color: white;
+  color: #3b82f6;
+}
+
+.home-cta-button.primary:hover {
+  background-color: #e5e7eb;
+}
