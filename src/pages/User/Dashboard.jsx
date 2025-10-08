@@ -53,9 +53,7 @@ export default function Dashboard() {
               <BookOpen size={20} />
             </div>
             <div>
-              <div className="card-title">
-                {borrowedBooks.filter((b) => b.status === "borrowed").length}
-              </div>
+              <div className="card-title">0</div>
               <div className="card-desc">Currently Borrowed</div>
             </div>
           </div>
@@ -67,9 +65,7 @@ export default function Dashboard() {
               <CheckCircle size={20} />
             </div>
             <div>
-              <div className="card-title">
-                {borrowedBooks.filter((b) => b.status === "returned").length}
-              </div>
+              <div className="card-title">1</div>
               <div className="card-desc">Books Returned</div>
             </div>
           </div>
@@ -81,9 +77,7 @@ export default function Dashboard() {
               <AlertCircle size={20} />
             </div>
             <div>
-              <div className="card-title">
-                {borrowedBooks.filter((b) => b.status === "overdue").length}
-              </div>
+              <div className="card-title">1</div>
               <div className="card-desc">Overdue Books</div>
             </div>
           </div>

@@ -1,7 +1,6 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext";
-import { loginUser } from "../../services/authAPI";
+import { useAuth } from "../../context/AuthContext"; // use the demo auth
 import { BookOpen } from "lucide-react";
 import "../../styles/Login.css";
 
@@ -9,18 +8,17 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const { setAuth } = useContext(AuthContext);
+  const { login } = useAuth(); // demo login
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     try {
-      const data = await loginUser({ email, password });
-      setAuth(data);
+      const data = await login(email, password); // demo auth login
       navigate(data.role === "admin" ? "/admin" : "/dashboard");
     } catch (err) {
-      setError(err.response?.data?.message || "Login failed");
+      setError(err.message || "Login failed");
     }
   };
 

@@ -9,19 +9,25 @@ import { FaCalendar, FaBookOpen, FaRedo } from "react-icons/fa";
 const demoBooks = [
   {
     id: "1",
-    book: { title: "1984", author: "George Orwell" },
+    book: {title: "Ego Is the Enemy",
+  author: "Ryan Holiday",
+  genre: "Self-help" },
     dueDate: new Date(new Date().setDate(new Date().getDate() + 7)),
     status: "borrowed",
   },
   {
     id: "2",
-    book: { title: "The Great Gatsby", author: "F. Scott Fitzgerald" },
+    book: {     title: "The Power of Now",
+    author: "Eckhart Tolle",  // updated
+    genre: "Spiritual"},
     dueDate: new Date(new Date().setDate(new Date().getDate() - 2)),
     status: "overdue",
   },
   {
     id: "3",
-    book: { title: "To Kill a Mockingbird", author: "Harper Lee" },
+    book: {    title: "Atomic Habits",
+    author: "James Clear",  // updated
+    genre: "Self-help"},
     dueDate: new Date(),
     status: "returned",
   },

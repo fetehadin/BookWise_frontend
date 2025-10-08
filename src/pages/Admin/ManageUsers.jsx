@@ -6,9 +6,9 @@ import { FaEdit, FaTrash, FaUserPlus, FaTimes } from "react-icons/fa";
 export default function ManageUsers() {
   // Sample users
   const sampleUsers = [
-    { id: 1, username: "john_doe", email: "john@example.com", role: "user" },
-    { id: 2, username: "admin01", email: "admin@example.com", role: "admin" },
-    { id: 3, username: "jane_smith", email: "jane@example.com", role: "user" },
+    { id: 1, username: "Fetehadin", email: "FetehadinNegash@gmail.com", role: "user" },
+    { id: 2, username: "Alazar", email: "AlazarWondifraw@gmail.com", role: "admin" },
+    { id: 3, username: "Abebe", email: "Abebe@gmail.com", role: "user" },
   ];
 
   const [users, setUsers] = useState(sampleUsers);

@@ -6,9 +6,36 @@ import { toast } from "sonner";
 
 // Sample books array
 const sampleBooks = [
-  { id: "1", title: "The Great Gatsby", author: "F. Scott Fitzgerald", genre: "Classic", copies: 5, availableCopies: 3, price: 10 },
-  { id: "2", title: "1984", author: "George Orwell", genre: "Dystopian", copies: 4, availableCopies: 0, price: 8 },
-  { id: "3", title: "To Kill a Mockingbird", author: "Harper Lee", genre: "Classic", copies: 6, availableCopies: 6, price: 12 },
+    {
+    id: "1",
+    title: "The Power of Now",
+    author: "Eckhart Tolle",  // updated
+    genre: "Spiritual",
+    copies: 5,
+    availableCopies: 3,
+    fee: 10,
+  },
+  {
+    id: "2",
+    title: "Atomic Habits",
+    author: "James Clear",  // updated
+    genre: "Self-help",
+    copies: 4,
+    availableCopies: 0,
+    fee: 8,
+  },
+  {
+
+  id: "3",
+  title: "Ego Is the Enemy",
+  author: "Ryan Holiday",
+  genre: "Self-help",
+  copies: 6,
+  availableCopies: 6,
+  fee: 12,
+
+
+  },
 ];
 
 export default function BookList() {
@@ -69,7 +96,7 @@ export default function BookList() {
                       ? `${book.availableCopies} available`
                       : "Not available"}
                   </p>
-                  <p className="book-price">Fee: ${book.price}</p>
+                  <p className="book-price">Fee: ${book.fee}</p>
                 </div>
                 <button
                   className={`borrow-btn ${book.availableCopies === 0 ? "disabled" : ""}`}

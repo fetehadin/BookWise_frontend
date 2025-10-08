@@ -197,7 +197,7 @@ export default function ManageBook() {
                   <td>{book.author}</td>
                   <td>{book.genre}</td>
                   <td>{book.copies}</td>
-                  <td>${book.price}</td>
+                  <td>${book.fee}</td>
                   <td>
                     <button onClick={() => handleEditBook(book)} className="edit">
                       <FaEdit />

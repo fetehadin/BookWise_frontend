@@ -25,9 +25,9 @@ export default function AdminDashboard() {
           { id: 3, name: "Charlie" },
         ];
         const transactions = [
-          { id: 1, bookTitle: "1984", userName: "Alice", date: "2025-10-05" },
-          { id: 2, bookTitle: "The Great Gatsby", userName: "Bob", date: "2025-10-04" },
-          { id: 3, bookTitle: "To Kill a Mockingbird", userName: "Charlie", date: "2025-10-03" },
+          { id: 1, bookTitle: "The power of now", userName: "Fetehadin", date: "2025-10-05" },
+          { id: 2, bookTitle: "Atomic habits", userName: "Abebe", date: "2025-10-04" },
+          { id: 3, bookTitle: "To Kill a Mockingbird", userName: "Fetehadin", date: "2025-10-03" },
         ];
 
         setStats({
